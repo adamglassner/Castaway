@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Castaway Library (mockup)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap">
+<style>
+  :root { --accent: #f2b33d; --bg: #16181c; --bar: #0f1013; --side: #121317; --panel: #1b1d22; --line: #24272d; --text: #e8e6e1; --muted: #8b8d93; --soft: #c9c7c1; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; }
+  button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+  .icon-btn { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: var(--soft); }
+  header { display: flex; align-items: center; gap: 16px; padding: 10px 20px; background: var(--bar); border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+  .logo { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: 0.06em; }
+  .logo span { color: var(--accent); }
+  .search { flex: 1 1 260px; max-width: 420px; display: flex; align-items: center; gap: 10px; background: #1f2227; border-radius: 6px; padding: 0 12px; height: 40px; }
+  .search input { flex: 1; background: none; border: none; color: var(--text); font: inherit; font-size: 14px; outline: none; }
+  .remote { display: flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; background: #1c2a22; color: #7fd3a0; font-size: 13px; font-weight: 600; }
+  .remote i { width: 8px; height: 8px; border-radius: 50%; background: #4cc47d; }
+  .avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--accent); color: var(--bg); font-family: 'Sora', sans-serif; font-weight: 700; }
+  .layout { display: flex; flex-wrap: wrap; min-height: calc(100vh - 65px); }
+  nav { flex: 1 1 220px; max-width: 240px; background: var(--side); padding: 12px 0; border-right: 1px solid var(--line); }
+  nav a { display: flex; align-items: center; gap: 14px; padding: 0 20px; height: 46px; text-decoration: none; font-size: 15px; color: var(--soft); }
+  nav a.on { background: var(--line); color: #fff; box-shadow: inset 3px 0 0 var(--accent); }
+  .server { margin: 16px 20px 0; padding-top: 16px; border-top: 1px solid var(--line); font-size: 12px; color: var(--muted); line-height: 1.6; }
+  main { flex: 999 1 560px; min-width: 0; }
+  .lib-head { display: flex; align-items: center; gap: 24px; padding: 12px 28px; background: var(--panel); flex-wrap: wrap; }
+  .lib-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 18px; }
+  .lib-sub { font-size: 11px; letter-spacing: 0.1em; color: var(--muted); }
+  .tabs { flex: 1; display: flex; justify-content: center; gap: 8px; }
+  .tabs button { height: 44px; padding: 0 18px; font-weight: 600; font-size: 14px; letter-spacing: 0.06em; color: #9a9ca3; border-radius: 4px; }
+  .tabs button.on { background: #262930; color: var(--accent); }
+  .filters { display: flex; align-items: center; gap: 20px; padding: 14px 28px; color: var(--soft); font-size: 14px; flex-wrap: wrap; }
+  .count { background: #262930; padding: 4px 10px; border-radius: 4px; font-size: 13px; }
+  .grid { padding: 4px 28px 40px; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 28px 22px; }
+  .card { text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px; }
+  .poster { position: relative; aspect-ratio: 2 / 3; border-radius: 4px; overflow: hidden; padding: 14px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 6px 18px rgba(0,0,0,0.45); }
+  .poster .tag { font-size: 10px; letter-spacing: 0.2em; opacity: 0.75; }
+  .poster .big { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 22px; line-height: 1.05; text-transform: uppercase; }
+  .poster .new { position: absolute; top: 0; right: 0; border-top: 22px solid var(--accent); border-left: 22px solid transparent; }
+  .name { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .year { font-size: 13px; color: var(--muted); margin-top: -4px; }
+</style>
+</head>
+<body>
+<header>
+  <button class="icon-btn" aria-label="Menu"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <div class="logo">CAST<span>AWAY</span></div>
+  <label class="search">
+    <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a9ca3" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+    <input type="search" placeholder="Search your libraries" aria-label="Search">
+  </label>
+  <div style="flex:1"></div>
+  <div class="remote"><i></i>Remote access: on</div>
+  <button class="icon-btn" aria-label="Activity"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></button>
+  <button class="icon-btn" aria-label="Settings"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8"/></svg></button>
+  <button class="icon-btn" aria-label="Cast to device"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6"/><path d="M3 12a8 8 0 0 1 8 8M3 16a4 4 0 0 1 4 4"/></svg></button>
+  <button class="avatar" aria-label="Account">A</button>
+</header>
+<div class="layout">
+  <nav aria-label="Libraries" id="libs"></nav>
+  <main>
+    <div class="lib-head">
+      <div><div class="lib-title">Movies</div><div class="lib-sub">HOME-NAS</div></div>
+      <div class="tabs"><button>RECOMMENDED</button><button class="on">LIBRARY</button></div>
+    </div>
+    <div class="filters">
+      <button>All ▾</button><button>Movies ▾</button><button>By Year ▾</button>
+      <span class="count">248</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </main>
+</div>
+<script>
+  const libs = ['Home', 'Movies', 'TV Shows', 'Kids & Family', 'Documentaries', 'Stand-Up', 'Anime'];
+  const icon = '<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 4v16M17 4v16M3 9h4M3 15h4M17 9h4M17 15h4"/></svg>';
+  document.getElementById('libs').innerHTML =
+    libs.map(n => `<a href="#" class="${n === 'Movies' ? 'on' : ''}">${icon}<span>${n}</span></a>`).join('') +
+    '<div class="server">Server: <span style="color:var(--soft)">home-nas</span><br>Docker · v0.1.0<br>2 streams active</div>';
+
+  // Placeholder titles; the real app fills this from your media library.
+  const movies = [
+    ['Northern Static', 2024, '#1f3a4d', '#e9f1f5', 'A FILM'],
+    ['The Salt Road', 2023, '#c9a26b', '#2a1d10', 'DRAMA'],
+    ['Glass Harbor', 2025, '#2c2f6b', '#f2e6c9', 'THRILLER'],
+    ['Midnight Ferry', 2022, '#111418', '#f2b33d', 'NOIR'],
+    ['Low Orbit', 2024, '#d9e2e8', '#1a2430', 'SCI-FI'],
+    ['Copper Valley', 2021, '#8a3b23', '#fbe3cf', 'WESTERN'],
+    ['Paper Lanterns', 2023, '#f0d9a8', '#5a2a1c', 'FAMILY'],
+    ['The Long Quiet', 2020, '#3d4a3a', '#e7eadf', 'DRAMA'],
+    ['Wild Signal', 2025, '#e8503a', '#fff3e8', 'ACTION'],
+    ['Hollow Pines', 2022, '#1c2b22', '#b9d8a8', 'HORROR'],
+    ['Neon Tide', 2024, '#5b1e5e', '#ffd0f0', 'MYSTERY'],
+    ['Atlas Falls', 2019, '#2d5a7a', '#f6e7c1', 'ADVENTURE']
+  ];
+  document.getElementById('grid').innerHTML = movies.map(([t, y, bg, fg, tag], i) => `
+    <a href="#" class="card">
+      <div class="poster" style="background:${bg};color:${fg}">
+        <div class="tag">${tag}</div><div class="big">${t}</div>
+        ${i % 3 !== 1 ? '<span class="new"></span>' : ''}
+      </div>
+      <div class="name">${t}</div><div class="year">${y}</div>
+    </a>`).join('');
+</script>
+</body>
+</html>
