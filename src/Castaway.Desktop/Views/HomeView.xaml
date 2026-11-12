@@ -1,0 +1,61 @@
+<UserControl x:Class="Castaway.Views.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Home preview. Every title on it is a made-up sample (see HomeView.xaml.cs). -->
+    <StackPanel>
+        <!-- Header -->
+        <DockPanel Margin="0,0,0,18">
+            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center">
+                <Button Style="{StaticResource GhostButton}" Click="Soon_Click" Tag="Shuffle play" Margin="0,0,8,0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="&#xE8B1;" Style="{StaticResource Icon}" Margin="0,0,7,0" />
+                        <TextBlock Text="Shuffle" />
+                    </StackPanel>
+                </Button>
+                <Button Style="{StaticResource PrimaryButton}" Click="Server_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="&#xE968;" Style="{StaticResource Icon}" Margin="0,0,7,0" />
+                        <TextBlock Text="Connect a server" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock x:Name="DateText" Style="{StaticResource Muted}" FontSize="14" />
+                <TextBlock x:Name="GreetingText" Style="{StaticResource PageTitle}" Margin="0,2,0,0" />
+            </StackPanel>
+        </DockPanel>
+
+        <!-- Preview notice -->
+        <Border Background="{DynamicResource Brush.AccentSoft}" CornerRadius="8" Padding="16,12" Margin="0,0,0,24">
+            <DockPanel>
+                <TextBlock DockPanel.Dock="Left" Text="&#xE946;" Style="{StaticResource Icon}" FontSize="16"
+                           Foreground="{DynamicResource Brush.AccentInk}" Margin="0,0,12,0" />
+                <TextBlock TextWrapping="Wrap">
+                    <Run Text="Preview." FontWeight="SemiBold" />
+                    <Run Text="These titles are made-up samples so you can see how Castaway will look. Connecting to your own Castaway server and playing your movies and shows is coming soon." />
+                </TextBlock>
+            </DockPanel>
+        </Border>
+
+        <!-- Continue watching -->
+        <DockPanel Margin="0,0,0,12">
+            <Button DockPanel.Dock="Right" Content="See all" Style="{StaticResource LinkButton}" Click="Soon_Click" Tag="Continue Watching" />
+            <TextBlock Text="Continue Watching" Style="{StaticResource CardTitle}" VerticalAlignment="Center" />
+        </DockPanel>
+        <WrapPanel x:Name="ContinueRow" Height="182" ClipToBounds="True" Margin="0,0,0,22" />
+
+        <!-- Recently added movies -->
+        <DockPanel Margin="0,0,0,12">
+            <Button DockPanel.Dock="Right" Content="See all" Style="{StaticResource LinkButton}" Click="GoTo_Click" Tag="movies" />
+            <TextBlock Text="Recently Added Movies" Style="{StaticResource CardTitle}" VerticalAlignment="Center" />
+        </DockPanel>
+        <WrapPanel x:Name="MoviesRow" Height="282" ClipToBounds="True" Margin="0,0,0,22" />
+
+        <!-- Recently added TV -->
+        <DockPanel Margin="0,0,0,12">
+            <Button DockPanel.Dock="Right" Content="See all" Style="{StaticResource LinkButton}" Click="GoTo_Click" Tag="tv" />
+            <TextBlock Text="Recently Added TV" Style="{StaticResource CardTitle}" VerticalAlignment="Center" />
+        </DockPanel>
+        <WrapPanel x:Name="ShowsRow" Height="282" ClipToBounds="True" />
+    </StackPanel>
+</UserControl>

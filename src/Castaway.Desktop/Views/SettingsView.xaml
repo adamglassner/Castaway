@@ -1,0 +1,89 @@
+<UserControl x:Class="Castaway.Views.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel MaxWidth="900" HorizontalAlignment="Left">
+        <TextBlock Text="Settings" Style="{StaticResource PageTitle}" Margin="0,0,0,20" />
+
+        <!-- Appearance: this one actually works -->
+        <Border Style="{StaticResource Card}" Margin="0,0,0,14">
+            <StackPanel>
+                <TextBlock Text="APPEARANCE" Style="{StaticResource SectionLabel}" />
+                <RadioButton x:Name="ThemeSystem" GroupName="Theme" Content="Match Windows (light or dark)" Checked="Theme_Checked" Tag="System" />
+                <RadioButton x:Name="ThemeLight" GroupName="Theme" Content="Light" Checked="Theme_Checked" Tag="Light" />
+                <RadioButton x:Name="ThemeDark" GroupName="Theme" Content="Dark" Checked="Theme_Checked" Tag="Dark" />
+            </StackPanel>
+        </Border>
+
+        <Border Style="{StaticResource Card}" Margin="0,0,0,14">
+            <StackPanel>
+                <DockPanel>
+                    <Border DockPanel.Dock="Right" Style="{StaticResource SoonPill}">
+                        <TextBlock Text="COMING SOON" Style="{StaticResource PillText}" />
+                    </Border>
+                    <TextBlock Text="CASTAWAY SERVER" Style="{StaticResource SectionLabel}" />
+                </DockPanel>
+                <TextBlock Style="{StaticResource Muted}" Margin="0,0,0,12"
+                           Text="Castaway plays media from a Castaway Server that you run on your own PC, NAS or home server (on its own or in Docker). Connect to it here." />
+                <DockPanel>
+                    <Button DockPanel.Dock="Right" Content="Connect" Style="{StaticResource PrimaryButton}" Margin="10,0,0,0"
+                            Click="Soon_Click" Tag="Connecting to a Castaway server" />
+                    <Button DockPanel.Dock="Right" Content="Find on my network" Style="{StaticResource GhostButton}" Margin="10,0,0,0"
+                            Click="Soon_Click" Tag="Finding servers on your network" />
+                    <TextBox Text="http://192.168.1.10:8420" IsEnabled="False" AutomationProperties.Name="Server address" />
+                </DockPanel>
+            </StackPanel>
+        </Border>
+
+        <Border Style="{StaticResource Card}" Margin="0,0,0,14">
+            <StackPanel>
+                <DockPanel>
+                    <Border DockPanel.Dock="Right" Style="{StaticResource SoonPill}">
+                        <TextBlock Text="COMING SOON" Style="{StaticResource PillText}" />
+                    </Border>
+                    <TextBlock Text="PLAYBACK" Style="{StaticResource SectionLabel}" />
+                </DockPanel>
+                <TextBlock Style="{StaticResource Muted}" Margin="0,0,0,12"
+                           Text="Video quality at home and away, subtitles, audio language, and skipping intros and credits." />
+                <WrapPanel>
+                    <Button Content="Quality" Style="{StaticResource GhostButton}" Margin="0,0,8,8" Click="Soon_Click" Tag="Quality settings" />
+                    <Button Content="Subtitles" Style="{StaticResource GhostButton}" Margin="0,0,8,8" Click="Soon_Click" Tag="Subtitle settings" />
+                    <Button Content="Audio language" Style="{StaticResource GhostButton}" Margin="0,0,8,8" Click="Soon_Click" Tag="Audio language settings" />
+                    <Button Content="Skip intros and credits" Style="{StaticResource GhostButton}" Margin="0,0,8,8" Click="Soon_Click" Tag="Skipping intros and credits" />
+                </WrapPanel>
+            </StackPanel>
+        </Border>
+
+        <Border Style="{StaticResource Card}" Margin="0,0,0,14">
+            <StackPanel>
+                <DockPanel>
+                    <Border DockPanel.Dock="Right" Style="{StaticResource SoonPill}">
+                        <TextBlock Text="COMING SOON" Style="{StaticResource PillText}" />
+                    </Border>
+                    <TextBlock Text="PROFILES" Style="{StaticResource SectionLabel}" />
+                </DockPanel>
+                <TextBlock Style="{StaticResource Muted}" Margin="0,0,0,12"
+                           Text="A profile for each person in the house, each with their own Continue Watching, plus kid profiles limited to Kids &amp; Family." />
+                <WrapPanel>
+                    <Button Content="Add profile" Style="{StaticResource GhostButton}" Margin="0,0,8,8" Click="Soon_Click" Tag="Profiles" />
+                    <Button Content="Kid profiles" Style="{StaticResource GhostButton}" Margin="0,0,8,8" Click="Soon_Click" Tag="Kid profiles" />
+                </WrapPanel>
+            </StackPanel>
+        </Border>
+
+        <Border Style="{StaticResource Card}">
+            <StackPanel>
+                <TextBlock Text="ABOUT" Style="{StaticResource SectionLabel}" />
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="pack://application:,,,/Assets/castaway.png" Width="40" Height="40" Margin="0,0,12,0"
+                           RenderOptions.BitmapScalingMode="HighQuality" />
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock x:Name="VersionText" FontSize="15" FontWeight="SemiBold" />
+                        <TextBlock Text="© 2026 Bytehawk Studio" Style="{StaticResource Muted}" />
+                    </StackPanel>
+                </StackPanel>
+                <TextBlock Style="{StaticResource Muted}" Margin="0,10,0,0"
+                           Text="This is an early preview: the app's layout is in place and each section shows what's coming. Free and open source (MIT). Updates arrive through the Bytehawk Studio Launcher." />
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>
